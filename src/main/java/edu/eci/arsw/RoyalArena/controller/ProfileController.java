@@ -56,7 +56,7 @@ public class ProfileController {
     /**
      * Devuelve el perfil público de cualquier jugador por su userId.
      */
-    @GetMapping("/{userId}")
+    @GetMapping("/{userId:\\d+}")
     public ResponseEntity<ProfileResponseDTO> getProfileByUserId(@PathVariable Long userId) {
         log.info("GET /api/profiles/{}", userId);
         return ResponseEntity.ok(profileService.getProfileByUserId(userId));

@@ -37,7 +37,7 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
      * Base para el leaderboard/ranking global.
      * El parámetro Pageable permite limitar (ej. top 100).
      */
-    List<Profile> findAllByOrderByCurrentTrophiesDesc();
+    List<Profile> findAllByOrderByCurrentTrophiesDesc(org.springframework.data.domain.Pageable pageable);
 
     /**
      * Perfiles de una arena específica, ordenados por trofeos.

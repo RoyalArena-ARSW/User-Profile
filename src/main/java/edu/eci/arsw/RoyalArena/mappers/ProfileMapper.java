@@ -3,7 +3,9 @@ package edu.eci.arsw.RoyalArena.mappers;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import edu.eci.arsw.RoyalArena.dto.response.ProfileResponseDTO;
 import edu.eci.arsw.RoyalArena.model.enums.Profile;
+
 
 
 @Mapper(componentModel = "spring")

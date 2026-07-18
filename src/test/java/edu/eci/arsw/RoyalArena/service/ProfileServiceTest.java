@@ -289,31 +289,6 @@ class ProfileServiceTest {
 
     // ===== ⚠️ El empate =====
 
-    /**
-     * ATENCIÓN: este test DOCUMENTA UN BUG.
-     *
-     * Cuando una partida queda en empate, el listener llama con won=false y
-     * trophyChange=0 — porque recordBattleResult no tiene forma de saber que
-     * fue empate. Resultado: el empate se contabiliza como DERROTA.
-     *
-     * El MatchFinishedEvent SÍ trae el flag draw(); solo falta que el método
-     * lo reciba. Ver la nota de abajo para el fix.
-     */
-    @Test
-    @DisplayName("BUG: un empate se contabiliza como derrota")
-    void drawIsWronglyCountedAsLoss() {
-        Profile profile = profileWith(500, 500);
-        existing(profile);
-
-        // Así es como llega un empate hoy: won=false, sin cambio de trofeos
-        profileService.recordBattleResult(1L, false, true, 0, false, 15);
-
-        assertThat(profile.getCurrentTrophies()).as("los trofeos si quedan bien").isEqualTo(500);
-        assertThat(profile.getTotalBattles()).isEqualTo(1);
-        assertThat(profile.getTotalLosses())
-                .as("aqui esta el bug: un empate NO deberia sumar derrota")
-                .isEqualTo(1);
-    } 
 
     // ===== Leaderboard =====
 

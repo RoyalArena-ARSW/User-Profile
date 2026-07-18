@@ -35,6 +35,7 @@ public class MatchFinishedListener {
                 profileService.recordBattleResult(
                         result.userId(),
                         result.won(),
+                        result.draw(), 
                         result.trophyChange(),
                         result.threeCrownWin(),
                         result.experienceGained());

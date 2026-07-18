@@ -140,7 +140,7 @@ public class ProfileService {
      * @param experienceGain experiencia ganada en la partida
      */
     @Transactional
-    public ProfileResponseDTO recordBattleResult(Long userId, boolean won, int trophyChange,
+    public ProfileResponseDTO recordBattleResult(Long userId, boolean won, boolean draw, int trophyChange,
                                                   boolean threeCrown, int experienceGain) {
         log.info("Recording battle result for userId {}: won={}, trophyChange={}",
                 userId, won, trophyChange);
@@ -148,7 +148,9 @@ public class ProfileService {
 
         // Actualizar contadores de batalla
         profile.setTotalBattles(profile.getTotalBattles() + 1);
-        if (won) {
+        if (draw) {
+            // Un empate no suma ni victoria ni derrota
+        } else if (won) {
             profile.setTotalWins(profile.getTotalWins() + 1);
             if (threeCrown) {
                 profile.setThreeCrownWins(profile.getThreeCrownWins() + 1);

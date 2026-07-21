@@ -1,4 +1,4 @@
-package edu.eci.arsw.royalarena.profile.model;
+package edu.eci.arsw.RoyalArena.model.enums;
 
 import java.time.LocalDateTime;
 

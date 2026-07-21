@@ -1,4 +1,4 @@
-package edu.eci.arsw.royalarena.profile.exception;
+package edu.eci.arsw.RoyalArena.exception;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;

@@ -1,5 +1,6 @@
 name: CI Pipeline
 
+
 on:
   push:
     branches: [ develop ]
@@ -16,5 +17,5 @@ jobs:
         with:
           java-version: '21'
           distribution: 'temurin'
-      - name: Build and test
-        run: mvn clean verify
+      - name: Build and verify
+        run: mvn clean verify -U
